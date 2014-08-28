@@ -1,0 +1,256 @@
+{UTF-8}
+Business Value Returned per User=
+	0.5
+	~	
+	~		|
+
+New API Listings on PW  = A FUNCTION OF( API Adoption)
+	~	
+	~		|
+
+Business Value=
+	Business Value Returned per User*Active End Users
+	~	Value
+	~		|
+
+API kickoff time=
+	36
+	~	
+	~		|
+
+API Adoption from Marketing=
+	Potential API Consumers*STEP(API Marketing Effectiveness, API kickoff time)
+	~	Users/Month
+	~		|
+
+API Discard Rate=
+	0.01
+	~	1/Months
+	~		|
+
+Active API Consumers= INTEG (
+	API Adoption-API Discard,
+		0)
+	~	Users
+	~		|
+
+Active End Users= INTEG (
+	Platform Adoption-Platform Discard,
+		0)
+	~	Users
+	~		|
+
+API Discard=
+	API Discard Rate*Active API Consumers
+	~	Users/Month
+	~		|
+
+API Adoption=
+	API Adoption from Marketing+API Adoption from Word of Mouth
+	~	Users/Month
+	~		|
+
+API Adoption from Word of Mouth=
+	API Word of Mouth Effectiveness*Potential API Consumers*Active API Consumers/(Active API Consumers\
+		+Potential API Consumers)
+	~	Users/Month
+	~		|
+
+API Marketing Effectiveness=
+	0.1
+	~	1/Months
+	~		|
+
+API Word of Mouth Effectiveness=
+	0.1
+	~	1/Months [0,1]
+	~		|
+
+App Marketing Effectiveness=
+	Marketing Effectiveness per App*Active API Consumers
+	~	
+	~		|
+
+Platform Marketing Effectiveness=
+	0.005
+	~	1/Month [0,0.1,0.001]
+	~		|
+
+Platform Discard Rate=
+	0.02
+	~	
+	~		|
+
+Platform Discard=
+	Active End Users*Platform Discard Rate
+	~	Users/Month
+	~		|
+
+Platform Adoption=
+	Platform Adoption from Marketing+Platform Adoption from Word of Mouth
+	~	Users/Month
+	~		|
+
+Marketing Effectiveness per App=
+	0.001
+	~	 [0,0.01,0.001]
+	~		|
+
+Potential API Consumers= INTEG (
+	API Discard-API Adoption,
+		100)
+	~	Users
+	~		|
+
+Potential End Users= INTEG (
+	Platform Discard-Platform Adoption,
+		100)
+	~	Users
+	~		|
+
+Platform Adoption from Marketing=
+	Potential End Users*(App Marketing Effectiveness+Platform Marketing Effectiveness)
+	~	Users/Month
+	~		|
+
+Platform Adoption from Word of Mouth=
+	Platform Word of Mouth Effectiveness*Active End Users*Potential End Users/(Active End Users\
+		+Potential End Users)
+	~	Users/Month
+	~		|
+
+Platform Word of Mouth Effectiveness=
+	0.05
+	~	1/Months [0,0.1,0.001]
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 120
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 0.5
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 0.015625
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
+10,1,Active API Consumers,496,205,40,20,3,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,2,3,1,4,0,0,22,0,0,0,-1--1--1,,1|(416,205)|
+11,3,348,370,205,6,8,34,3,0,0,1,0,0,0
+10,4,API Adoption,370,222,41,9,40,3,0,8,-1,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,5,6,1,100,0,0,22,0,0,0,-1--1--1,,1|(496,138)|
+11,6,364,370,138,6,8,34,3,0,0,1,0,0,0
+10,7,API Discard,370,155,37,9,40,3,0,8,-1,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,8,API Marketing Effectiveness,365,330,45,16,8,131,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,9,API Word of Mouth Effectiveness,501,331,60,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,10,Business Value,955,368,57,12,8,3,0,10,0,0,0,0,0-0-0,0-0-0,|18||255-0-0
+10,11,Potential API Consumers,248,205,40,20,3,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,12,3,11,100,0,0,22,0,0,0,-1--1--1,,1|(326,205)|
+1,13,6,11,4,0,0,22,0,0,0,-1--1--1,,1|(248,138)|
+10,14,API Discard Rate,278,107,52,9,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,15,14,6,1,0,0,0,0,64,0,-1--1--1,,1|(337,112)|
+10,16,API Adoption from Marketing,315,271,58,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,17,API Adoption from Word of Mouth,431,271,58,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,18,16,4,1,0,0,0,0,64,0,-1--1--1,,1|(357,247)|
+1,19,17,4,1,0,0,0,0,64,0,-1--1--1,,1|(385,247)|
+1,20,11,16,1,0,0,0,0,64,0,-1--1--1,,1|(257,239)|
+1,21,1,17,1,0,0,0,0,64,0,-1--1--1,,1|(500,248)|
+1,22,1,7,1,0,0,0,0,64,0,-1--1--1,,1|(448,162)|
+1,23,8,16,0,0,0,0,0,64,0,-1--1--1,,1|(344,305)|
+1,24,11,17,1,0,0,0,0,64,0,-1--1--1,,1|(227,336)|
+1,25,9,17,1,0,0,0,0,64,0,-1--1--1,,1|(476,311)|
+10,26,Potential End Users,633,274,40,20,3,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,27,Active End Users,930,277,40,20,3,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,28,30,27,4,0,0,22,0,0,0,-1--1--1,,1|(840,276)|
+1,29,30,26,100,0,0,22,0,0,0,-1--1--1,,1|(726,276)|
+11,30,268,785,276,6,8,34,3,0,0,1,0,0,0
+10,31,Platform Adoption,785,293,55,9,40,3,0,8,-1,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,32,33,27,100,0,0,22,0,0,0,-1--1--1,,1|(930,331)|
+11,33,396,787,331,6,8,34,3,0,0,1,0,0,0
+10,34,Platform Discard,787,348,50,9,40,3,0,8,-1,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,35,33,26,4,0,0,22,0,0,0,-1--1--1,,1|(633,331)|
+10,36,Platform Adoption from Marketing,716,214,56,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+10,37,Platform Adoption from Word of Mouth,841,214,62,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,38,37,30,1,0,0,0,0,64,0,-1--1--1,,1|(807,233)|
+1,39,36,30,1,0,0,0,0,64,0,-1--1--1,,1|(763,233)|
+1,40,26,36,1,0,0,0,0,64,0,-1--1--1,,1|(644,234)|
+1,41,27,37,1,0,0,0,0,64,0,-1--1--1,,1|(910,224)|
+1,42,26,37,1,0,0,0,0,64,0,-1--1--1,,1|(637,117)|
+10,43,Platform Marketing Effectiveness,770,154,59,16,8,3,0,8,0,0,0,0,-1--1--1,0-0-0,|14||0-0-0
+10,44,App Marketing Effectiveness,670,169,46,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,45,1,44,1,0,0,0,0,64,0,-1--1--1,,1|(573,188)|
+1,46,44,36,1,0,0,0,0,64,0,-1--1--1,,1|(700,194)|
+1,47,43,36,0,0,0,0,0,64,0,-1--1--1,,1|(747,178)|
+1,48,27,33,1,0,0,0,0,64,0,-1--1--1,,1|(878,308)|
+10,49,Platform Discard Rate,677,368,39,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,50,49,34,1,0,0,0,0,64,0,-1--1--1,,1|(734,355)|
+10,51,Platform Word of Mouth Effectiveness,917,162,61,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,52,51,37,1,0,0,0,0,64,0,-1--1--1,,1|(882,180)|
+10,53,Marketing Effectiveness per App,724,111,65,16,8,3,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,54,53,44,0,0,0,0,0,64,0,-1--1--1,,1|(701,135)|
+1,55,27,10,1,0,0,0,0,64,0,-1--1--1,,1|(950,316)|
+10,56,API kickoff time,276,336,28,22,8,131,0,8,0,0,0,0,0-0-0,0-0-0,|14||0-0-0
+1,57,56,16,0,0,0,0,0,64,0,-1--1--1,,1|(293,306)|
+10,58,Business Value Returned per User,1037,299,47,14,8,3,0,0,0,0,0,0
+1,59,58,10,1,0,0,0,0,64,0,-1--1--1,,1|(975,340)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 2
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
+10,1,API Adoption,241,154,36,8,8,3,0,0,-1,0,0,0
+10,2,API Adoption from Marketing,163,107,44,14,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|0||128-128-128
+1,3,2,1,0,0,0,0,0,0,0,-1--1--1,,1|(200,129)|
+10,4,API Adoption from Word of Mouth,313,106,53,14,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|0||128-128-128
+1,5,4,1,0,0,0,0,0,0,0,-1--1--1,,1|(278,129)|
+10,6,New API Listings on PW,243,213,46,14,8,3,0,0,0,0,0,0
+1,7,1,6,0,0,0,0,0,64,0,-1--1--1,,1|(241,173)|
+///---\\\
+:L<%^E!@
+1:With API.vdf
+1:No API.vdf
+9:No API
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+22:Day,Days
+15:0,0,0,0,0,0
+19:100,1
+27:2,
+34:0,
+4:Time
+5:API kickoff time
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+42:1
+24:0
+25:120
+26:120
